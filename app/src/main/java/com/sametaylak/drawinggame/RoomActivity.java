@@ -32,7 +32,7 @@ public class RoomActivity extends AppCompatActivity {
         gManager.onJoinedRoom = new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.d(TAG, "call: Biri katildi");
+
             }
         };
         gManager.setListener();
