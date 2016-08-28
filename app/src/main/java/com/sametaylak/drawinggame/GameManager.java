@@ -2,14 +2,22 @@ package com.sametaylak.drawinggame;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.StrictMode;
+import android.util.Base64;
+import android.util.Log;
 
+import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 
 import java.net.URISyntaxException;
 
 public class GameManager {
+
+    private final static String TAG = "GameManager";
+
+    public Emitter.Listener onJoinedRoom;
 
     private Socket      mSocket; {
         try {
@@ -21,6 +29,10 @@ public class GameManager {
     public GameManager(Context ctx) {
         mSocket.connect();
         mContext = ctx;
+    }
+
+    public void setListener() {
+        mSocket.on("joined room", onJoinedRoom);
     }
 
     public void createRoom (String roomName) {
@@ -38,4 +50,5 @@ public class GameManager {
         Intent intent = new Intent(mContext, RoomActivity.class);
         mContext.startActivity(intent);
     }
+
 }
