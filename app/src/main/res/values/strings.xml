@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DrawingGame</string>
+    <string name="create_room">Create Room</string>
+    <string name="join_room">Join Room</string>
 </resources>
